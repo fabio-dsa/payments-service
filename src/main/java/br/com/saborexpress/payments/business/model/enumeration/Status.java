@@ -13,6 +13,10 @@ public enum Status {
 
     private final String label;
 
+    public StatusDTO toDTO() {
+        return new StatusDTO(this);
+    }
+
     @Getter
     public static class StatusDTO {
         private final String key;

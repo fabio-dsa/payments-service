@@ -14,6 +14,10 @@ public class PaymentAssembler implements Assembler<Payment, PaymentDTO> {
 
     @Override
     public PaymentDTO toDTO(Payment entity) {
-        return mapper.map(entity, PaymentDTO.class);
+        var paymentDTO = mapper.map(entity, PaymentDTO.class);
+
+        paymentDTO.setStatus(entity.getStatus().toDTO());
+
+        return paymentDTO;
     }
 }
