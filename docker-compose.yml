@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  postgres:
+    image: postgres:15.0-alpine
+    hostname: postgres
+    container_name: postgres
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+    healthcheck:
+      test: pg_isready -U postgres -d postgres
+      start_period: 15s
+      interval: 1s
+      timeout: 10s
+      retries: 30
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5434:5432"
+    restart: always
+    volumes:
+      - ./compose/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d

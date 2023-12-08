@@ -1,0 +1,17 @@
+server:
+  servlet:
+    context-path: /payments-service-api
+spring:
+  application:
+    name: payments-service
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5434/PAYMENTS_SERVICE
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
